@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+/src/component/Hero
+/src/component/Navlinks
+/src/component/Pricetricker
+/src/app/product/
