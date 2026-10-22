@@ -1,6 +1,4 @@
-
 import Link from "next/link";
-import { notFound } from "next/navigation";
 import CategoryProductList from "@/component/CategoryProductList";
 
 const API_URL =

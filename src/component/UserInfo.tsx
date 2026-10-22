@@ -9,7 +9,6 @@ import toast from "react-hot-toast";
 import {
   FiChevronDown,
   FiUser,
-  FiSettings,
   FiLogOut,
 } from "react-icons/fi";
 

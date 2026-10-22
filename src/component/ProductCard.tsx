@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 
 interface PriceChange {
@@ -65,7 +64,7 @@ function getChangeText(change: PriceChange) {
 export default function ProductCard({ product }: ProductCardProps) {
   return (
     <Link
-      href={`/product/${product.slug}`}
+      href={`/product/${product.id}`}
       aria-label={`${product.nameBn} পণ্যের বিস্তারিত দেখুন`}
       className="group flex flex-col rounded-xl border border-[#e0e8e1] bg-[#fbfdfb] p-3 transition-all duration-200 hover:-translate-y-0.5 hover:border-green-300 hover:shadow-md"
     >
@@ -91,9 +90,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       {/* Today's price and percentage badge */}
       <div className="mt-3 flex items-end justify-between gap-2">
         <div className="min-w-0">
-          <p className="text-[10px] leading-4 text-gray-500">
-            আজকের দাম
-          </p>
+          <p className="text-[10px] leading-4 text-gray-500">আজকের দাম</p>
 
           <p className="mt-0.5 text-sm font-bold leading-5 text-[#26332a]">
             {formatPrice(product.today)} টাকা

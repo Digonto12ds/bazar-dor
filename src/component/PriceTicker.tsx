@@ -41,7 +41,7 @@ const PriceTicker = async () => {
     <div className="w-full border border-gray-200 bg-white text-neutral-900">
       <MarqueeText
         className=" py-2"
-        direction="left"
+        direction="right"
         duration={10}
       >
         {products.map((product) => (

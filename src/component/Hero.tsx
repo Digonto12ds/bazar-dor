@@ -8,7 +8,7 @@ const Hero = () => {
 
   return (
     <section className="w-full bg-white py-8">
-      <div className="mx-auto flex min-h-[500px] w-full max-w-7xl items-center rounded-3xl border border-neutral-200 bg-white px-8 py-12 md:px-10 lg:min-h-[560px]">
+      <div className="mx-auto flex min-h-125 w-full max-w-7xl items-center rounded-3xl border border-neutral-200 bg-white px-8 py-12 md:px-10 lg:min-h-125">
         
         {/* Left Content */}
         <div className="w-1/2">
@@ -40,7 +40,7 @@ const Hero = () => {
 
         {/* Right Banner Image */}
         <div className="flex w-1/2 justify-end">
-          <div className="relative h-[430px] w-[520px] overflow-hidden rounded-3xl">
+          <div className="relative h-107.5 w-130 overflow-hidden rounded-3xl">
             <Image
               src="/bazar-hero.png"
               alt="বাজারের পণ্য"

@@ -1,6 +1,4 @@
-
 import Image from "next/image";
-import Link from "next/link";
 import NavLinks from "./NavLinks";
 import UserInfo from "./UserInfo";
 // import UserInfo from "./UserInfo";
