@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import NavLinks from "./NavLinks";
+import UserInfo from "./UserInfo";
 // import UserInfo from "./UserInfo";
 
 const Header = () => {
@@ -37,24 +38,7 @@ const Header = () => {
         </div>
 
         {/* Authentication Buttons */}
-        <div className="flex items-center gap-2">
-          <Link
-            href="/signin"
-            className="rounded-lg border border-green-800 px-4 py-2 text-sm font-semibold text-green-800 transition hover:bg-green-50 sm:px-5 sm:text-base"
-          >
-            সাইন ইন
-          </Link>
-
-          <Link
-            href="/signup"
-            className="rounded-lg bg-green-800 px-4 py-2 text-sm font-semibold text-white transition hover:bg-green-700 sm:px-5 sm:text-base"
-          >
-            সাইন আপ
-          </Link>
-
-          {/* When authentication is implemented, show UserInfo instead */}
-          {/* <UserInfo /> */}
-        </div>
+        <UserInfo/>
       </div>
 
       {/* Category Navigation */}
