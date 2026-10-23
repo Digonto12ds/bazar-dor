@@ -1,8 +1,7 @@
 import Link from "next/link";
 import CategoryProductList from "@/component/CategoryProductList";
 
-const API_URL =
-  "https://openapi.programming-hero.com/api/bazardor";
+const API_URL = "https://openapi.programming-hero.com/api/bazardor";
 
 interface Category {
   id: string;
@@ -32,11 +31,7 @@ interface ApiResponse<T> {
 }
 
 function unwrap<T>(response: ApiResponse<T> | T): T {
-  if (
-    response !== null &&
-    typeof response === "object" &&
-    "data" in response
-  ) {
+  if (response !== null && typeof response === "object" && "data" in response) {
     return response.data as T;
   }
 
@@ -47,13 +42,12 @@ async function getCategory(slug: string): Promise<Category | null> {
   try {
     const response = await fetch(
       `${API_URL}/categories/${encodeURIComponent(slug)}`,
-      { next: { revalidate: 300 } }
+      { next: { revalidate: 300 } },
     );
 
     if (!response.ok) return null;
 
-    const json: ApiResponse<Category> | Category =
-      await response.json();
+    const json: ApiResponse<Category> | Category = await response.json();
 
     const category = unwrap<Category>(json);
 
@@ -65,19 +59,16 @@ async function getCategory(slug: string): Promise<Category | null> {
   }
 }
 
-async function getCategoryProducts(
-  slug: string
-): Promise<Product[] | null> {
+async function getCategoryProducts(slug: string): Promise<Product[] | null> {
   try {
     const response = await fetch(
       `${API_URL}/products?category=${encodeURIComponent(slug)}`,
-      { next: { revalidate: 300 } }
+      { next: { revalidate: 300 } },
     );
 
     if (!response.ok) return null;
 
-    const json: ApiResponse<Product[]> | Product[] =
-      await response.json();
+    const json: ApiResponse<Product[]> | Product[] = await response.json();
 
     return unwrap<Product[]>(json);
   } catch {
@@ -98,8 +89,8 @@ function EmptyCategory() {
         </h1>
 
         <p className="mt-3 text-sm leading-6 text-gray-500">
-          এই ক্যাটাগরিটি পাওয়া যায়নি অথবা এখানে এখনো কোনো পণ্য নেই।
-          অন্য পণ্য দেখতে হোম পেজে ফিরে যান।
+          এই ক্যাটাগরিটি পাওয়া যায়নি অথবা এখানে এখনো কোনো পণ্য নেই। অন্য পণ্য
+          দেখতে হোম পেজে ফিরে যান।
         </p>
 
         <Link
@@ -125,42 +116,39 @@ export default async function CategoryPage({
     getCategoryProducts(slug),
   ]);
 
-  // Invalid category or failed product request.
   if (!category || !products || products.length === 0) {
-  return <EmptyCategory />;
-}
+    return <EmptyCategory />;
+  }
 
   return (
-    <main className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 sm:py-10">
+    <main className="mx-auto w-full max-w-7xl px-3 py-5 sm:px-6 sm:py-8 lg:px-8 lg:py-10">
       {/* Breadcrumb */}
-      <nav className="mb-6 text-sm text-gray-500">
+      <nav className="mb-4 flex flex-wrap items-center gap-y-1 text-xs text-gray-500 sm:mb-6 sm:text-sm">
         <Link href="/" className="transition hover:text-green-800">
           হোম
         </Link>
-        <span className="mx-2">/</span>
+        <span className="mx-1.5 sm:mx-2">/</span>
         <span className="text-gray-900">{category.nameBn}</span>
       </nav>
 
-      {/* Category heading */}
-      <header className="mb-7 rounded-2xl border border-[#e0e8e1] bg-[#fbfdfb] p-5 sm:p-7">
-        <div className="flex items-center gap-4">
+      <header className="mb-5 rounded-2xl border border-[#e0e8e1] bg-[#fbfdfb] p-3 sm:mb-7 sm:p-6 lg:p-7">
+        <div className="flex min-w-0 items-center gap-3 sm:gap-4">
           <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-green-50 text-3xl sm:h-16 sm:w-16 sm:text-4xl">
             {category.icon}
           </div>
 
-          <div>
-            <h1 className="text-2xl font-bold text-[#26332a] sm:text-3xl">
+          <div className="min-w-0 flex-1">
+            <h1 className="text-xl font-bold text-[#26332a] sm:text-3xl">
               {category.nameBn}
             </h1>
 
-            <p className="mt-1 text-sm text-gray-500">
+            <p className="mt-1 text-xs leading-5 text-gray-500 sm:text-sm sm:leading-6">
               এই ক্যাটাগরির সব পণ্যের আজকের বাজারদর দেখুন।
             </p>
           </div>
         </div>
       </header>
 
-      {/* Sorting and product cards */}
       <CategoryProductList products={products} />
     </main>
   );

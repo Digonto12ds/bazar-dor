@@ -228,9 +228,9 @@ export default async function ProductDetailsPage({
         : FiMinus;
 
   return (
-    <main className="min-h-screen bg-[#f0f5f0] px-3 py-6 sm:px-6 sm:py-10">
+    <main className="min-h-screen bg-[#f0f5f0] px-3 py-5 sm:px-6 sm:py-8 lg:py-10">
       <div className="mx-auto max-w-5xl">
-        {/* Back Button */}
+        
         <Link
           href="/"
           className="mb-5 inline-flex items-center gap-2 text-sm font-semibold text-green-800 transition hover:text-green-600"
@@ -239,12 +239,12 @@ export default async function ProductDetailsPage({
           হোম পেজে ফিরে যান
         </Link>
 
-        {/* Product Header */}
-        <section className="rounded-2xl border border-[#e0e8e1] bg-[#fbfdfb] p-4 sm:p-5">
-          <div className="flex items-center justify-between gap-3 sm:gap-5">
+        
+        <section className="rounded-2xl border border-[#e0e8e1] bg-[#fbfdfb] p-3 sm:p-5">
+          <div className="flex min-w-0 items-center justify-between gap-2 sm:gap-5">
             {/* Product Information */}
             <div className="flex min-w-0 items-center gap-3 sm:gap-4">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#f0f5f0] sm:h-18 sm:w-18">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#f0f5f0] sm:h-16 sm:w-16">
                 <span
                   className="text-2xl sm:text-4xl"
                   role="img"
@@ -255,7 +255,7 @@ export default async function ProductDetailsPage({
               </div>
 
               <div className="min-w-0">
-                <h1 className="text-base font-extrabold leading-snug text-[#26332a] sm:text-2xl">
+                <h1 className="wrap-break-word text-sm font-extrabold leading-snug text-[#26332a] sm:text-2xl">
                   {product.nameBn}
                 </h1>
 
@@ -273,8 +273,8 @@ export default async function ProductDetailsPage({
               </div>
             </div>
 
-            {/* Today's Price */}
-            <div className="flex w-20.5 shrink-0 flex-col items-center justify-center rounded-xl bg-[#f0f5f0] px-2 py-3 sm:w-27.5 sm:py-4">
+            
+            <div className="flex w-23 shrink-0 flex-col items-center justify-center rounded-xl bg-[#f0f5f0] px-1.5 py-3 sm:w-32 sm:px-3 sm:py-4">
               <p className="text-[9px] text-gray-500 sm:text-xs">
                 আজকের দাম
               </p>
@@ -303,13 +303,13 @@ export default async function ProductDetailsPage({
           </div>
         </section>
 
-        {/* Price Summary */}
-        <section className="mt-6">
+        
+        <section className="mt-5 sm:mt-6">
           <h2 className="mb-3 text-base font-extrabold text-[#26332a] sm:text-lg">
             দামের সংক্ষিপ্ত বিবরণ
           </h2>
 
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
             <SummaryCard
               title="সর্বনিম্ন দাম"
               price={lowestPrice}
@@ -330,8 +330,8 @@ export default async function ProductDetailsPage({
           </div>
         </section>
 
-        {/* Market Price Table */}
-        <section className="mt-6 overflow-hidden rounded-2xl border border-[#e0e8e1] bg-[#fbfdfb]">
+        
+        <section className="mt-5 overflow-hidden rounded-2xl border border-[#e0e8e1] bg-[#fbfdfb] sm:mt-6">
           <div className="border-b border-[#e0e8e1] px-4 py-4 sm:px-5">
             <h2 className="text-base font-extrabold text-[#26332a] sm:text-lg">
               বাজারভিত্তিক আজকের দাম
@@ -344,7 +344,7 @@ export default async function ProductDetailsPage({
 
           {markets.length > 0 ? (
             <div className="overflow-x-auto">
-              <table className="w-full min-w-140 text-left text-sm">
+              <table className="w-full min-w-140 text-left text-xs sm:text-sm">
                 <thead className="bg-[#f0f5f0] text-xs text-gray-600">
                   <tr>
                     <th className="px-4 py-3 font-bold sm:px-5">
@@ -425,8 +425,8 @@ export default async function ProductDetailsPage({
           )}
         </section>
 
-        {/* Price Information */}
-        <p className="mt-4 text-center text-[11px] leading-5 text-gray-500">
+        
+        <p className="mt-4 px-2 text-center text-[10px] leading-5 text-gray-500 sm:text-xs">
           সকল দাম সম্ভাব্য; বাজার ও সময় অনুযায়ী পরিবর্তিত হতে পারে।
         </p>
       </div>

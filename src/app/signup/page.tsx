@@ -1,4 +1,3 @@
-
 "use client";
 
 import { authClient } from "@/lib/auth-client";
@@ -8,7 +7,6 @@ import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import toast from "react-hot-toast";
-
 
 export default function SignUpPage() {
   const router = useRouter();
@@ -24,9 +22,7 @@ export default function SignUpPage() {
     const name = String(formData.get("name") ?? "").trim();
     const email = String(formData.get("email") ?? "").trim();
     const password = String(formData.get("password") ?? "");
-    const confirmPassword = String(
-      formData.get("confirmPassword") ?? ""
-    );
+    const confirmPassword = String(formData.get("confirmPassword") ?? "");
 
     if (!name || !email || !password || !confirmPassword) {
       toast.error("সবগুলো তথ্য পূরণ করুন।");
@@ -69,9 +65,7 @@ export default function SignUpPage() {
     }
   };
 
-  const handleSocialSignup = async (
-    provider: "google" | "github"
-  ) => {
+  const handleSocialSignup = async (provider: "google" | "github") => {
     setSocialLoading(provider);
 
     try {
@@ -91,23 +85,20 @@ export default function SignUpPage() {
   };
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-[#f0f5f0] px-4 py-10">
-      <div className="w-full max-w-94.5">
-        {/* Heading */}
-        <div className="mb-6 text-center">
-          <h1 className="text-2xl font-extrabold tracking-tight text-[#26332a]">
+    <main className="flex min-h-screen items-center justify-center bg-[#f0f5f0] px-3 py-6 sm:px-5 sm:py-10">
+      <div className="w-full max-w-md">
+        <div className="mb-6 text-center sm:mb-6">
+          <h1 className="text-xl font-extrabold tracking-tight text-[#26332a] sm:text-2xl">
             অ্যাকাউন্ট তৈরি করুন
           </h1>
 
-          <p className="mt-1 text-xs text-[#788078]">
+          <p className="mx-auto mt-2 max-w-sm text-xs leading-5 text-[#788078] sm:text-sm">
             বিনা খরচে সাইন আপ করে সব বিস্তারিত দাম দেখুন
           </p>
         </div>
 
-        {/* Form Card */}
-        <div className="rounded-2xl border border-[#dfe8df] bg-[#fbfdfb] p-5 sm:p-6">
+        <div className="rounded-xl border border-[#dfe8df] bg-[#fbfdfb] p-4 shadow-sm sm:rounded-2xl sm:p-6">
           <form onSubmit={onSubmit} className="space-y-4">
-            {/* Name */}
             <div>
               <label
                 htmlFor="name"
@@ -123,11 +114,10 @@ export default function SignUpPage() {
                 placeholder="যেমন: রহিম উদ্দিন"
                 autoComplete="name"
                 required
-                className="w-full rounded-lg border border-[#dfe8df] bg-transparent px-3 py-2.5 text-sm outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
+                className="w-full min-w-0 rounded-lg border border-[#dfe8df] bg-transparent px-3 py-3 text-sm text-[#26332a] outline-none transition placeholder:text-gray-500 focus:border-green-600 focus:ring-2 focus:ring-green-100"
               />
             </div>
 
-            {/* Email */}
             <div>
               <label
                 htmlFor="email"
@@ -143,11 +133,10 @@ export default function SignUpPage() {
                 placeholder="you@example.com"
                 autoComplete="email"
                 required
-                className="w-full rounded-lg border border-[#dfe8df] bg-transparent px-3 py-2.5 text-sm outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
+                className="w-full min-w-0 rounded-lg border border-[#dfe8df] bg-transparent px-3 py-3 text-sm text-[#26332a] outline-none transition placeholder:text-gray-500 focus:border-green-600 focus:ring-2 focus:ring-green-100"
               />
             </div>
 
-            {/* Password */}
             <div>
               <label
                 htmlFor="password"
@@ -164,11 +153,10 @@ export default function SignUpPage() {
                 autoComplete="new-password"
                 minLength={8}
                 required
-                className="w-full rounded-lg border border-[#dfe8df] bg-transparent px-3 py-2.5 text-sm outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
+                className="w-full min-w-0 rounded-lg border border-[#dfe8df] bg-transparent px-3 py-3 text-sm text-[#26332a] outline-none transition placeholder:text-gray-500 focus:border-green-600 focus:ring-2 focus:ring-green-100"
               />
             </div>
 
-            {/* Confirm Password */}
             <div>
               <label
                 htmlFor="confirmPassword"
@@ -184,37 +172,34 @@ export default function SignUpPage() {
                 placeholder="আবার লিখুন"
                 autoComplete="new-password"
                 required
-                className="w-full rounded-lg border border-[#dfe8df] bg-transparent px-3 py-2.5 text-sm outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
+                className="w-full min-w-0 rounded-lg border border-[#dfe8df] bg-transparent px-3 py-3 text-sm text-[#26332a] outline-none transition placeholder:text-gray-500 focus:border-green-600 focus:ring-2 focus:ring-green-100"
               />
             </div>
 
-            {/* Submit */}
             <button
               type="submit"
               disabled={loading || !!socialLoading}
-              className="w-full rounded-lg bg-[#07883e] px-4 py-3 text-sm font-semibold text-white shadow-md transition hover:bg-[#067433] disabled:cursor-not-allowed disabled:opacity-60"
+              className="w-full rounded-lg bg-[#07883e] px-4 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#067433] disabled:cursor-not-allowed disabled:opacity-60 sm:py-3.5"
             >
               {loading ? "অ্যাকাউন্ট তৈরি হচ্ছে..." : "অ্যাকাউন্ট তৈরি করুন"}
             </button>
           </form>
 
-          {/* Divider */}
           <div className="my-4 flex items-center gap-3">
             <div className="h-px flex-1 bg-[#dfe8df]" />
-            <span className="text-xs text-gray-500">অথবা</span>
+            <span className="shrink-0 text-xs text-gray-500">অথবা</span>
             <div className="h-px flex-1 bg-[#dfe8df]" />
           </div>
 
-          {/* Social Login */}
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-2 gap-2 sm:gap-3">
             <button
               type="button"
               disabled={loading || !!socialLoading}
               onClick={() => handleSocialSignup("google")}
-              className="flex items-center justify-center gap-1.5 rounded-lg border border-[#dfe8df] px-2 py-2.5 text-xs font-semibold text-[#26332a] transition hover:bg-[#f0f5f0] disabled:opacity-60"
+              className="flex min-w-0 items-center justify-center gap-1.5 rounded-lg border border-[#dfe8df] px-2 py-3 text-xs font-semibold leading-4 text-[#26332a] transition hover:bg-[#f0f5f0] disabled:cursor-not-allowed disabled:opacity-60 sm:gap-2 sm:px-3 sm:text-sm"
             >
-              <FcGoogle className="shrink-0 text-base" />
-              <span>
+              <FcGoogle className="shrink-0 text-base sm:text-lg" />
+              <span className="min-w-0 text-center">
                 {socialLoading === "google"
                   ? "অপেক্ষা করুন..."
                   : "Google দিয়ে চালিয়ে যান"}
@@ -227,7 +212,7 @@ export default function SignUpPage() {
               onClick={() => handleSocialSignup("github")}
               className="flex items-center justify-center gap-1.5 rounded-lg border border-[#dfe8df] px-2 py-2.5 text-xs font-semibold text-[#26332a] transition hover:bg-[#f0f5f0] disabled:opacity-60"
             >
-              <FaGithub className="shrink-0 text-base" />
+              <FaGithub className="shrink-0 text-base sm:text-lg" />
               <span>
                 {socialLoading === "github"
                   ? "অপেক্ষা করুন..."
@@ -236,8 +221,7 @@ export default function SignUpPage() {
             </button>
           </div>
 
-          {/* Sign In Link */}
-          <p className="mt-5 text-center text-xs text-[#59645b]">
+          <p className="mt-5 text-center text-xs leading-5 text-[#59645b] sm:text-sm">
             অ্যাকাউন্ট আছে?{" "}
             <Link
               href="/signin"
@@ -248,11 +232,10 @@ export default function SignUpPage() {
           </p>
         </div>
 
-        {/* Back Home */}
         <div className="mt-5 text-center">
           <Link
             href="/"
-            className="text-xs text-[#788078] transition hover:text-[#07883e]"
+            className="inline-block px-2 py-1 text-xs text-[#788078] transition hover:text-[#07883e] sm:text-sm"
           >
             ← হোম পেজে ফিরে যান
           </Link>
