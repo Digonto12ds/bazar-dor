@@ -44,10 +44,10 @@ export default function CategoryProductList({
   }, [products, sort]);
 
   return (
-    <section>
+    <section className="w-full min-w-0">
       {/* Results and sort control */}
-      <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-sm text-gray-500">
+      <div className="mb-5 flex min-w-0 flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+        <p className="text-sm text-gray-500 sm:text-sm">
           মোট{" "}
           <span className="font-bold text-gray-900">
             {products.length.toLocaleString("bn-BD")}
@@ -55,7 +55,7 @@ export default function CategoryProductList({
           টি পণ্য
         </p>
 
-        <div className="flex items-center gap-3">
+        <div className="flex w-full min-w-0 items-center gap-3 sm:w-auto sm:justify-end">
           <label
             htmlFor="category-sort"
             className="shrink-0 text-sm font-medium text-gray-600"
@@ -67,7 +67,7 @@ export default function CategoryProductList({
             id="category-sort"
             value={sort}
             onChange={(event) => setSort(event.target.value as SortOption)}
-            className="min-w-0 flex-1 rounded-xl border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-800 outline-none transition focus:border-green-700 focus:ring-2 focus:ring-green-100 sm:flex-none"
+            className="min-w-0 flex-1 cursor-pointer rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-xs text-gray-800 outline-none transition focus:border-green-700 focus:ring-2 focus:ring-green-100 sm:w-auto sm:flex-none sm:rounded-xl sm:text-sm"
           >
             <option value="default">ডিফল্ট</option>
             <option value="asc">দাম: কম থেকে বেশি</option>
@@ -78,20 +78,20 @@ export default function CategoryProductList({
 
       {/* Product grid */}
       {sortedProducts.length === 0 ? (
-        <div className="rounded-2xl border border-dashed border-gray-300 bg-white px-5 py-12 text-center">
-          <p className="text-lg font-bold text-gray-800">
+        <div className="rounded-xl border border-dashed border-gray-300 bg-white px-4 py-10 text-center sm:rounded-2xl sm:px-6 sm:py-12">
+          <p className="text-lg font-bold text-gray-800 sm:text-lg">
             কোনো পণ্য পাওয়া যায়নি!
           </p>
 
           <Link
             href="/"
-            className="mt-5 inline-flex rounded-xl bg-green-800 px-5 py-3 text-sm font-semibold text-white transition hover:bg-green-700"
+            className="mt-5 inline-flex max-w-full items-center justify-center rounded-lg bg-green-800 px-4 py-3 text-center text-xs font-semibold text-white transition hover:bg-green-700 sm:rounded-xl sm:px-5 sm:text-sm"
           >
             হোম পেজে ফিরে যান
           </Link>
         </div>
       ) : (
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid min-w-0 grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
           {sortedProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

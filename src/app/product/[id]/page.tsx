@@ -103,10 +103,7 @@ function getMarketAverage(market: Market): number | null {
   if (typeof market.average === "number") return market.average;
   if (typeof market.price === "number") return market.price;
 
-  if (
-    typeof market.min === "number" &&
-    typeof market.max === "number"
-  ) {
+  if (typeof market.min === "number" && typeof market.max === "number") {
     return (market.min + market.max) / 2;
   }
 
@@ -124,15 +121,11 @@ function SummaryCard({
 }) {
   return (
     <div className="rounded-xl border border-[#e0e8e1] bg-[#fbfdfb] p-4 sm:p-5">
-      <p className="text-xs font-medium text-gray-500 sm:text-sm">
-        {title}
-      </p>
+      <p className="text-xs font-medium text-gray-500 sm:text-sm">{title}</p>
 
       <p className={`mt-2 text-xl font-extrabold sm:text-2xl ${color}`}>
         {formatPrice(price)}
-        <span className="ml-1 text-xs font-medium text-gray-500">
-          টাকা
-        </span>
+        <span className="ml-1 text-xs font-medium text-gray-500">টাকা</span>
       </p>
     </div>
   );
@@ -167,9 +160,7 @@ export default async function ProductDetailsPage({
   const product = getProduct(payload);
 
   if (!product) {
-    throw new Error(
-      "API থেকে পণ্যের তথ্য সঠিকভাবে পাওয়া যায়নি।"
-    );
+    throw new Error("API থেকে পণ্যের তথ্য সঠিকভাবে পাওয়া যায়নি।");
   }
 
   const markets = product.markets ?? [];
@@ -228,9 +219,8 @@ export default async function ProductDetailsPage({
         : FiMinus;
 
   return (
-    <main className="min-h-screen bg-[#f0f5f0] px-3 py-5 sm:px-6 sm:py-8 lg:py-10">
-      <div className="mx-auto max-w-5xl">
-        
+    <main className="min-h-screen w-full min-w-0 overflow-x-clip bg-[#f0f5f0] px-3 py-5 sm:px-6 sm:py-8 lg:py-10">
+      <div className="mx-auto w-full min-w-0 max-w-5xl">
         <Link
           href="/"
           className="mb-5 inline-flex items-center gap-2 text-sm font-semibold text-green-800 transition hover:text-green-600"
@@ -239,12 +229,10 @@ export default async function ProductDetailsPage({
           হোম পেজে ফিরে যান
         </Link>
 
-        
-        <section className="rounded-2xl border border-[#e0e8e1] bg-[#fbfdfb] p-3 sm:p-5">
-          <div className="flex min-w-0 items-center justify-between gap-2 sm:gap-5">
-            {/* Product Information */}
+        <section className="min-w-0 rounded-2xl border border-[#e0e8e1] bg-[#fbfdfb] p-3 sm:p-5">
+          <div className="flex min-w-0 flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-5">
             <div className="flex min-w-0 items-center gap-3 sm:gap-4">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#f0f5f0] sm:h-16 sm:w-16">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#f0f5f0] sm:h-16 sm:w-16">
                 <span
                   className="text-2xl sm:text-4xl"
                   role="img"
@@ -254,18 +242,18 @@ export default async function ProductDetailsPage({
                 </span>
               </div>
 
-              <div className="min-w-0">
-                <h1 className="wrap-break-word text-sm font-extrabold leading-snug text-[#26332a] sm:text-2xl">
+              <div className="min-w-0 flex-1">
+                <h1 className="wrap-break-word text-base font-extrabold leading-snug text-[#26332a] sm:text-2xl">
                   {product.nameBn}
                 </h1>
 
-                <p className="mt-1 text-[11px] text-gray-500 sm:text-sm">
+                <p className="mt-1 wrap-break-word text-xs text-gray-500 sm:text-sm">
                   {product.categoryNameBn ?? product.category ?? "পণ্য"}
                   {" · "}
                   {getUnitLabel(product.unit)}
                 </p>
 
-                <p className="mt-2 text-[10px] leading-4 text-gray-600 sm:text-xs">
+                <p className="mt-2 wrap-break-word text-xs leading-5 text-gray-600">
                   গতকালের তুলনায় আজকের দাম {changeText}
                   {" · "}
                   {formatPrice(product.today)} টাকা
@@ -273,22 +261,17 @@ export default async function ProductDetailsPage({
               </div>
             </div>
 
-            
-            <div className="flex w-23 shrink-0 flex-col items-center justify-center rounded-xl bg-[#f0f5f0] px-1.5 py-3 sm:w-32 sm:px-3 sm:py-4">
-              <p className="text-[9px] text-gray-500 sm:text-xs">
-                আজকের দাম
-              </p>
+            <div className="flex w-full min-w-0 flex-row flex-wrap items-center justify-between gap-2 rounded-xl bg-[#f0f5f0] px-4 py-3 sm:w-32 sm:flex-col sm:flex-nowrap sm:justify-center sm:px-3 sm:py-4">
+              <p className="text-xs text-gray-500">আজকের দাম</p>
 
-              <p className="mt-1 text-xl font-extrabold leading-tight text-[#26332a] sm:text-3xl">
+              <p className="text-xl font-extrabold leading-tight text-[#26332a] sm:mt-1 sm:text-3xl">
                 {formatPrice(product.today)}
               </p>
 
-              <p className="mt-1 text-[9px] text-gray-500 sm:text-xs">
-                টাকা / {product.unit}
-              </p>
+              <p className="text-xs text-gray-500">টাকা / {product.unit}</p>
 
               <span
-                className={`mt-1 inline-flex items-center gap-1 text-[9px] font-bold sm:text-[11px] ${
+                className={`inline-flex items-center gap-1 text-xs font-bold ${
                   direction === "up"
                     ? "text-red-600"
                     : direction === "down"
@@ -296,20 +279,19 @@ export default async function ProductDetailsPage({
                       : "text-gray-500"
                 }`}
               >
-                <ChangeIcon size={11} />
+                <ChangeIcon size={12} />
                 {formatPrice(percentage)}%
               </span>
             </div>
           </div>
         </section>
 
-        
         <section className="mt-5 sm:mt-6">
           <h2 className="mb-3 text-base font-extrabold text-[#26332a] sm:text-lg">
             দামের সংক্ষিপ্ত বিবরণ
           </h2>
 
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 sm:gap-4">
             <SummaryCard
               title="সর্বনিম্ন দাম"
               price={lowestPrice}
@@ -330,8 +312,7 @@ export default async function ProductDetailsPage({
           </div>
         </section>
 
-        
-        <section className="mt-5 overflow-hidden rounded-2xl border border-[#e0e8e1] bg-[#fbfdfb] sm:mt-6">
+        <section className="mt-5 w-full min-w-0 max-w-full overflow-hidden rounded-2xl border border-[#e0e8e1] bg-[#fbfdfb] sm:mt-6">
           <div className="border-b border-[#e0e8e1] px-4 py-4 sm:px-5">
             <h2 className="text-base font-extrabold text-[#26332a] sm:text-lg">
               বাজারভিত্তিক আজকের দাম
@@ -343,22 +324,16 @@ export default async function ProductDetailsPage({
           </div>
 
           {markets.length > 0 ? (
-            <div className="overflow-x-auto">
-              <table className="w-full min-w-140 text-left text-xs sm:text-sm">
+            <div className="w-full min-w-0 max-w-full overflow-x-auto overscroll-x-contain">
+              <table className="w-full min-w-130 border-collapse text-left text-xs sm:text-sm">
                 <thead className="bg-[#f0f5f0] text-xs text-gray-600">
                   <tr>
-                    <th className="px-4 py-3 font-bold sm:px-5">
-                      বাজার
-                    </th>
-                    <th className="px-4 py-3 font-bold">
-                      জেলা
-                    </th>
+                    <th className="px-4 py-3 font-bold sm:px-5">বাজার</th>
+                    <th className="px-4 py-3 font-bold">জেলা</th>
                     <th className="px-4 py-3 text-right font-bold">
                       সর্বনিম্ন
                     </th>
-                    <th className="px-4 py-3 text-right font-bold">
-                      সর্বোচ্চ
-                    </th>
+                    <th className="px-4 py-3 text-right font-bold">সর্বোচ্চ</th>
                     <th className="px-4 py-3 text-right font-bold sm:px-5">
                       গড় দাম
                     </th>
@@ -425,7 +400,6 @@ export default async function ProductDetailsPage({
           )}
         </section>
 
-        
         <p className="mt-4 px-2 text-center text-[10px] leading-5 text-gray-500 sm:text-xs">
           সকল দাম সম্ভাব্য; বাজার ও সময় অনুযায়ী পরিবর্তিত হতে পারে।
         </p>
