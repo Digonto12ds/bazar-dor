@@ -1,7 +1,6 @@
 import Image from "next/image";
 import NavLinks from "./NavLinks";
 import UserInfo from "./UserInfo";
-// import UserInfo from "./UserInfo";
 
 const Header = () => {
   const date = new Date().toLocaleDateString("bn-BD", {
@@ -9,11 +8,9 @@ const Header = () => {
   });
 
   return (
-    <header className="mx-auto w-full max-w-7xl px-4 py-4">
-      {/* Top Row */}
-      <div className="flex flex-wrap items-center justify-between gap-4">
-        {/* Logo + Date */}
-        <div className="flex items-center gap-2">
+    <header className="mx-auto w-full max-w-7xl px-3 py-3 sm:px-5 sm:py-4 lg:px-8">
+      <div className="flex flex-wrap items-center justify-between gap-3 sm:gap-4">
+        <div className="flex min-w-0 items-center gap-2 sm:gap-3">
           <div>
             <Image
               className="rounded-xl bg-green-700"
@@ -22,25 +19,28 @@ const Header = () => {
               width={48}
               height={48}
               priority
+              sizes="(max-width: 640px) 40px, 48px"
             />
           </div>
 
-          <div className="flex flex-col items-start">
-            <span className="text-2xl font-bold text-black">
+          <div className="flex min-w-0 flex-col items-start">
+            <span className="text-lg font-bold text-black sm:text-2xl">
               বাজার দর
             </span>
-            <span className="text-xs text-neutral-500">
+            <span className="text-[10px] leading-4 text-neutral-500 sm:text-xs">
               {date}
             </span>
           </div>
         </div>
 
-        {/* Authentication Buttons */}
-        <UserInfo/>
+        <div className="flex shrink-0 items-center">
+          <UserInfo />
+        </div>
       </div>
 
-      {/* Category Navigation */}
-      <NavLinks />
+      <div className="mt-3 sm:mt-4">
+        <NavLinks />
+      </div>
     </header>
   );
 };

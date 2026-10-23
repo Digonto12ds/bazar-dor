@@ -80,7 +80,7 @@ const UserInfo = () => {
     );
   }
 
-  // Guest buttons
+  
   if (!user) {
     return (
       <div className="flex items-center gap-2">
@@ -103,7 +103,7 @@ const UserInfo = () => {
 
   return (
     <div ref={dropdownRef} className="relative">
-      {/* Profile Dropdown Trigger */}
+      
       <button
         type="button"
         onClick={() => setOpen((prev) => !prev)}
@@ -132,13 +132,13 @@ const UserInfo = () => {
         />
       </button>
 
-      {/* Dropdown Menu */}
+    
       {open && (
         <div
           role="menu"
           className="absolute right-0 top-full z-50 mt-2 w-64 overflow-hidden rounded-xl border border-[#e0e8e0] bg-white shadow-xl"
         >
-          {/* User Details */}
+          
           <div className="border-b border-gray-100 bg-[#f7faf7] px-4 py-4">
             <div className="flex items-center gap-3">
               <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full border border-green-100 bg-green-50">
@@ -162,7 +162,7 @@ const UserInfo = () => {
             </div>
           </div>
 
-          {/* Menu Links */}
+          
           <div className="p-2">
             <Link
               href="/profile"
@@ -175,7 +175,7 @@ const UserInfo = () => {
             </Link>
           </div>
 
-          {/* Sign Out */}
+          
           <div className="border-t border-gray-100 p-2">
             <button
               type="button"

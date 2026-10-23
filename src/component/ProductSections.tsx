@@ -89,13 +89,13 @@ export default async function ProductSections() {
 
   const products = getData<Product[]>(json);
 
-  // Section A: Top 6 price risers
+ 
   const risers = products
     .filter((product) => product.change.dir === "up")
     .sort((a, b) => b.change.pct - a.change.pct)
     .slice(0, 6);
 
-  // Section B: Top 6 price fallers
+  
   const fallers = products
     .filter((product) => product.change.dir === "down")
     .sort(

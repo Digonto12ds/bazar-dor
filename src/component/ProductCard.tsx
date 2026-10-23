@@ -66,39 +66,39 @@ export default function ProductCard({ product }: ProductCardProps) {
     <Link
       href={`/product/${product.id}`}
       aria-label={`${product.nameBn} পণ্যের বিস্তারিত দেখুন`}
-      className="group flex flex-col rounded-xl border border-[#e0e8e1] bg-[#fbfdfb] p-3 transition-all duration-200 hover:-translate-y-0.5 hover:border-green-300 hover:shadow-md"
+      className="group flex h-full min-w-0 flex-col rounded-xl border border-[#e0e8e1] bg-[#fbfdfb] p-3 transition-all duration-200 hover:-translate-y-0.5 hover:border-green-300 hover:shadow-md sm:p-4"
     >
-      {/* Product image and information */}
-      <div className="flex items-center gap-3">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#f0f5f0]">
-          <span className="text-xl" role="img" aria-label={product.nameBn}>
+      
+      <div className="flex min-w-0 items-center gap-2 sm:gap-3">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#f0f5f0] sm:h-12 sm:w-12">
+          <span className="text-xl sm:text-2xl" role="img" aria-label={product.nameBn}>
             {product.image}
           </span>
         </div>
 
         <div className="min-w-0 flex-1">
-          <h3 className="truncate text-sm font-bold leading-5 text-[#26332a] group-hover:text-green-800">
+          <h3 className="truncate text-sm font-bold leading-5 text-[#26332a] group-hover:text-green-800 sm:text-base">
             {product.nameBn}
           </h3>
 
-          <p className="mt-0.5 text-[11px] leading-4 text-gray-500">
+          <p className="mt-0.5 text-[11px] leading-4 text-gray-500 sm:text-xs">
             {getUnitLabel(product.unit)}
           </p>
         </div>
       </div>
 
-      {/* Today's price and percentage badge */}
-      <div className="mt-3 flex items-end justify-between gap-2">
+      
+      <div className="mt-3 flex min-w-0 flex-wrap items-end justify-between gap-x-2 gap-y-2 sm:mt-4">
         <div className="min-w-0">
-          <p className="text-[10px] leading-4 text-gray-500">আজকের দাম</p>
+          <p className="text-[10px] leading-4 text-gray-500 sm:text-xs">আজকের দাম</p>
 
-          <p className="mt-0.5 text-sm font-bold leading-5 text-[#26332a]">
+          <p className="mt-0.5 text-sm font-bold leading-5 text-[#26332a] sm:text-base">
             {formatPrice(product.today)} টাকা
           </p>
         </div>
 
         <span
-          className={`mb-0.5 inline-flex shrink-0 items-center rounded-full px-2 py-1 text-[10px] font-bold leading-none ${getChangeStyle(product.change.dir)}`}
+          className={`mb-0.5 inline-flex max-w-full shrink-0 items-center rounded-full px-2 py-1 text-[10px] font-bold leading-none sm:text-xs ${getChangeStyle(product.change.dir)}`}
         >
           {getChangeText(product.change)}
         </span>
